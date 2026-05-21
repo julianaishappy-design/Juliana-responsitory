@@ -1,14 +1,382 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Times - Top Stories</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&amp;family=Libre+Franklin:wght@400;500;700&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#e4e2e1",
+                      "inverse-primary": "#c8c6c5",
+                      "tertiary": "#000000",
+                      "on-secondary-fixed-variant": "#474747",
+                      "on-secondary-container": "#656464",
+                      "on-tertiary-container": "#848484",
+                      "surface-dim": "#dadada",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "surface-container": "#eeeeee",
+                      "on-error-container": "#93000a",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed": "#1b1c1c",
+                      "secondary-fixed-dim": "#c8c6c6",
+                      "background": "#f9f9f9",
+                      "on-surface-variant": "#444748",
+                      "tertiary-container": "#1b1c1c",
+                      "surface-bright": "#f9f9f9",
+                      "secondary": "#5f5e5e",
+                      "editorial-red": "#D0021B",
+                      "surface-variant": "#e2e2e2",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-primary-container": "#858383",
+                      "on-primary-fixed": "#1c1b1b",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "outline": "#747878",
+                      "secondary-fixed": "#e4e2e1",
+                      "on-primary-fixed-variant": "#474646",
+                      "on-surface": "#1a1c1c",
+                      "news-tan": "#F7F7F7",
+                      "surface-container-low": "#f3f3f4",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#1c1b1b",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#2f3131",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "surface-tint": "#5f5e5e",
+                      "outline-variant": "#c4c7c7",
+                      "surface": "#f9f9f9",
+                      "on-error": "#ffffff",
+                      "primary": "#000000",
+                      "primary-fixed": "#e5e2e1",
+                      "inverse-on-surface": "#f0f1f1",
+                      "border-gray": "#EBEBEB",
+                      "tertiary-fixed": "#e4e2e2",
+                      "error": "#ba1a1a",
+                      "on-background": "#1a1c1c",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "surface-container-high": "#e8e8e8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-margin": "2rem",
+                      "stack-md": "1rem",
+                      "stack-sm": "0.5rem",
+                      "column-gutter": "1.5rem",
+                      "rule-weight": "1px",
+                      "stack-lg": "2rem",
+                      "stack-xs": "0.25rem"
+              },
+              "fontFamily": {
+                      "headline-md": ["Newsreader"],
+                      "label-md": ["Libre Franklin"],
+                      "caption": ["Libre Franklin"],
+                      "body-md": ["Source Serif 4"],
+                      "headline-lg": ["Newsreader"],
+                      "label-caps": ["Libre Franklin"],
+                      "body-lg": ["Source Serif 4"],
+                      "headline-lg-mobile": ["Newsreader"],
+                      "display-masthead": ["Newsreader"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "label-md": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                      "caption": ["11px", {"lineHeight": "14px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["34px", {"lineHeight": "40px", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "display-masthead": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .double-rule {
+            border-top: 1px solid #1a1c1c;
+            border-bottom: 1px solid #1a1c1c;
+            height: 4px;
+            margin: 4px 0;
+        }
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .main-col { grid-column: span 6; }
+        .side-col-left { grid-column: span 3; border-right: 1px solid #EBEBEB; padding-right: 1.5rem; }
+        .side-col-right { grid-column: span 3; border-left: 1px solid #EBEBEB; padding-left: 1.5rem; }
+        
+        @media (max-width: 1024px) {
+            .side-col-left, .side-col-right { grid-column: span 12; border: none; padding: 0; }
+            .main-col { grid-column: span 12; }
+        }
+    </style>
 </head>
-<body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
-</body>
-</html>
+<body class="bg-background text-on-surface selection:bg-secondary-container">
+<!-- Top Navigation Anchor -->
+<header class="bg-surface border-b-2 border-primary border-double dark:border-outline pb-2 mb-1">
+<div class="flex flex-col items-center w-full px-section-margin max-w-7xl mx-auto">
+<!-- Date and User Actions -->
+<div class="w-full flex justify-between items-center py-2 border-b border-border-gray">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[18px]">search</span>
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</div>
+<div class="font-label-md text-label-md uppercase tracking-tight">
+                    Wednesday, May 20, 2026
+                </div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-4 py-1 font-label-caps text-label-caps uppercase rounded-sm hover:opacity-90 transition-all">Subscribe</button>
+<button class="font-label-caps text-label-caps uppercase hover:underline decoration-editorial-red underline-offset-4">Log In</button>
+</div>
+</div>
+<!-- Masthead -->
+<div class="py-6">
+<h1 class="font-display-masthead text-display-masthead text-primary text-center italic leading-none select-none">
+                    The Times
+                </h1>
+</div>
+<!-- Navigation Links -->
+<nav class="w-full flex justify-center border-t border-border-gray pt-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
+<div class="flex gap-column-gutter items-center py-2">
+<a class="font-label-caps text-label-caps text-primary font-bold border-b-2 border-primary pb-1 transition-all" href="#">World</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all hover:underline decoration-editorial-red underline-offset-4" href="#">Politics</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all hover:underline decoration-editorial-red underline-offset-4" href="#">Business</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all hover:underline decoration-editorial-red underline-offset-4" href="#">Tech</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all hover:underline decoration-editorial-red underline-offset-4" href="#">Science</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all hover:underline decoration-editorial-red underline-offset-4" href="#">Health</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all hover:underline decoration-editorial-red underline-offset-4" href="#">Style</a>
+</div>
+</nav>
+</div>
+</header>
+<!-- Live Banner -->
+<div class="max-w-7xl mx-auto px-section-margin mb-6">
+<div class="border-y border-border-gray py-2 flex items-center gap-4 overflow-x-auto scrollbar-hide">
+<span class="font-label-caps text-label-caps text-editorial-red font-bold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-editorial-red animate-pulse"></span> LIVE
+            </span>
+<div class="h-4 w-[1px] bg-border-gray"></div>
+<a class="font-label-md text-label-md font-bold hover:underline" href="#">Trump Administration: Fund Explainer</a>
+<div class="h-4 w-[1px] bg-border-gray"></div>
+<a class="font-label-md text-label-md hover:underline text-on-surface-variant" href="#">N.B.A. Western Conference Finals</a>
+</div>
+</div>
+<!-- Main Content Canvas -->
+<main class="max-w-7xl mx-auto px-section-margin">
+<div class="editorial-grid">
+<!-- Left Column: Secondary Stories -->
+<aside class="side-col-left flex flex-col gap-stack-lg">
+<article class="group">
+<h3 class="font-headline-md text-headline-md mb-2 group-hover:text-secondary transition-colors">
+<a href="#">Trump’s Government Moves to Spare an Unhappy Taxpayer Named Trump</a>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-2">
+                        No president has ever used the government to advance his own personal interests as expansively and openly as President Trump.
+                    </p>
+<span class="font-caption text-caption text-on-primary-container">7 min read</span>
+<hr class="mt-stack-md border-border-gray"/>
+</article>
+<article>
+<h4 class="font-label-caps text-label-caps text-editorial-red mb-2">CRISIS IN CUBA</h4>
+<ul class="flex flex-col gap-stack-sm">
+<li class="border-b border-border-gray pb-2"><a class="font-headline-md text-[18px] hover:underline" href="#">Raúl Castro’s Power</a></li>
+<li class="border-b border-border-gray pb-2"><a class="font-headline-md text-[18px] hover:underline" href="#">Pressure Campaign</a></li>
+<li class="border-b border-border-gray pb-2"><a class="font-headline-md text-[18px] hover:underline" href="#">Out of Oil</a></li>
+</ul>
+</article>
+<div class="bg-news-tan p-4 border border-border-gray">
+<h4 class="font-label-caps text-label-caps mb-2">THE EVENING</h4>
+<a class="font-headline-md text-headline-md leading-tight hover:underline" href="#">Catch Up on Today’s Biggest Stories</a>
+<p class="font-caption text-caption mt-2">The Raúl Castro indictment and TV’s senior moment.</p>
+</div>
+</aside>
+<!-- Center Column: Primary Lead -->
+<div class="main-col flex flex-col gap-stack-lg">
+<article class="flex flex-col gap-4">
+<h2 class="font-headline-lg text-headline-lg leading-[1.1] md:text-[42px] tracking-tight hover:text-secondary transition-colors cursor-pointer">
+                        Trump’s $1.8 Billion Fund Appears to Violate Administration’s Own Policies
+                    </h2>
+<figure class="relative w-full aspect-[16/10] overflow-hidden bg-surface-variant">
+<img alt="Professional news coverage" class="w-full h-full object-cover" data-alt="A cinematic, low-angle wide shot showing a formal handshake between two high-ranking political figures in a grand federal hall with neoclassical architecture. The lighting is dramatic and crisp, casting soft shadows across the polished marble floor. The overall aesthetic is one of institutional authority and high-stakes journalism, utilizing a sophisticated palette of deep blacks, greys, and crisp whites with a classic light-mode feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAYMqU_Qdm2r4dkpNb_7jDhrN7LORCA0KBfvJCexB79hzfpSBMnADMywEikmXyy6RyrHcXlCp2E5nxuGpwBr1VNbCBfnTZa1YrVMErXEcCKgKeQdZJQG_ELy6xI-_qCOrAavDqS1qxc6AkbQnrZ5IlCD8N_Foor9mLUUXl9lyBhp3JPy76ntJt0GBfUkYz-TijZ71FyFP-4bBdU4XWrnu-NTDQ6vdxuf8GySjdvY8CthL6691p4NiuEu_F31d8g-5UUtxIOhcH8kTY"/>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-2 italic text-right">Eric Lee/The Times</figcaption>
+</figure>
+<p class="font-body-lg text-body-lg leading-relaxed">
+                        The fund that could offer payouts to Trump allies seems to contradict a policy instituted under former Attorney General Pam Bondi last year, legal experts said. This development has sparked a massive wave of litigation from constitutional scholars and oversight committees.
+                    </p>
+<div class="flex items-center gap-4 border-b border-border-gray pb-4">
+<span class="font-caption text-caption font-bold uppercase tracking-widest text-editorial-red">Analysis</span>
+<span class="font-caption text-caption text-on-primary-container">6 min read</span>
+</div>
+</article>
+<div class="grid grid-cols-2 gap-column-gutter">
+<article class="border-r border-border-gray pr-4">
+<h3 class="font-headline-md text-[20px] mb-2 hover:underline"><a href="#">Jan. 6 Police Officers Sue to Block Trump’s Payout Fund</a></h3>
+<p class="font-body-md text-body-md text-on-surface-variant">The legal challenge represents the first direct attempt by law enforcement to stall the controversial payouts.</p>
+</article>
+<article>
+<h3 class="font-headline-md text-[20px] mb-2 hover:underline"><a href="#">Cuba Says It’s Ready to Negotiate Amid Indictment News</a></h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Diplomatic channels remain open despite the unprecedented charges against the former president.</p>
+</article>
+</div>
+<div class="double-rule my-4"></div>
+<section class="flex flex-col gap-6">
+<h4 class="font-label-caps text-label-caps uppercase border-b border-primary w-fit pb-1">Artificial Intelligence</h4>
+<div class="editorial-grid">
+<div class="col-span-12 md:col-span-7">
+<h3 class="font-headline-lg text-[28px] mb-2 hover:underline"><a href="#">OpenAI Prepares to File to Go Public in Coming Weeks</a></h3>
+<p class="font-body-md text-body-md">The most anticipated IPO of the decade signals a shift in Silicon Valley's power dynamic as generative AI matures into a multi-billion dollar industry.</p>
+</div>
+<div class="col-span-12 md:col-span-5">
+<img class="w-full h-32 object-cover bg-surface-variant mb-2" data-alt="A sophisticated, minimalist abstract representation of artificial intelligence as flowing lines of glowing white light against a stark black background. The visual style is crisp and modern, emphasizing clarity and technological precision. The lighting is high-key with soft gradients, creating a premium and intellectual atmosphere consistent with a prestigious news publication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1_9HCYQZ_MgjXjD0XtLH8MFiVJb54t_2nLPIHIeKt6oxIBm4S2U_-1KscXEpN6kKHNLWv4G2CDnaKVfh-PYBZJMZRF8MmApUH5dzCPoweHGNQE4Fj8PHdBCobTk6roWKdO9BBD92e0BuMg8J91aXekBQpmkkMRzC4qB0USlCpAfW8JL4d-JYENkrcrJu0vltshDwnUi4FS3rPoFmAAH_FcTWyX9wGhCfzTlDGA7UTruPF6xcixnwpf6GW3NylnchCbFCDkNZ7UyOC"/>
+<span class="font-caption text-caption text-on-surface-variant">Jason Henry for The Times</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Opinion & Extra -->
+<aside class="side-col-right flex flex-col gap-stack-lg">
+<section>
+<h4 class="font-label-caps text-label-caps text-primary border-b border-border-gray pb-1 mb-4 flex items-center justify-between">
+                        OPINION 
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+</h4>
+<div class="flex flex-col gap-stack-lg">
+<article class="border-b border-border-gray pb-4">
+<span class="font-label-md text-label-md font-bold block mb-1">Jeffrey Toobin</span>
+<h3 class="font-headline-md text-[20px] leading-tight hover:underline"><a href="#">Trump Just Pardoned Himself and His Family Forever</a></h3>
+</article>
+<article class="border-b border-border-gray pb-4">
+<span class="font-label-md text-label-md font-bold block mb-1">The Editorial Board</span>
+<h3 class="font-headline-md text-[20px] leading-tight hover:underline"><a href="#">There Has Never Been an Example of Presidential Corruption Like This</a></h3>
+</article>
+<article>
+<span class="font-label-md text-label-md font-bold block mb-1">Ivy Meeropol</span>
+<h3 class="font-headline-md text-[20px] leading-tight hover:underline"><a href="#">The Truth About E. Jean Carroll</a></h3>
+</article>
+</div>
+</section>
+<div class="bg-surface-container p-4">
+<h4 class="font-label-caps text-label-caps mb-4">GAMES</h4>
+<div class="grid grid-cols-1 gap-2">
+<a class="flex items-center justify-between border-b border-outline-variant py-2 group" href="#">
+<div>
+<span class="font-bold font-label-md block">Wordle</span>
+<span class="text-[11px] font-caption text-on-secondary-container">Guess the 5-letter word</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_forward_ios</span>
+</a>
+<a class="flex items-center justify-between border-b border-outline-variant py-2 group" href="#">
+<div>
+<span class="font-bold font-label-md block">Connections</span>
+<span class="text-[11px] font-caption text-on-secondary-container">Group related words</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_forward_ios</span>
+</a>
+<a class="flex items-center justify-between py-2 group" href="#">
+<div>
+<span class="font-bold font-label-md block">The Crossword</span>
+<span class="text-[11px] font-caption text-on-secondary-container">Daily solve</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_forward_ios</span>
+</a>
+</div>
+</div>
+<article class="border-t-2 border-primary pt-4 mt-4">
+<h4 class="font-label-caps text-label-caps mb-2">THE GREAT READ</h4>
+<img class="w-full aspect-square object-cover mb-2 grayscale hover:grayscale-0 transition-all duration-500" data-alt="A hauntingly beautiful aerial photograph of a lone humpback whale swimming in the cold, deep blue waters off the coast of Denmark. The lighting is soft and overcast, characteristic of a Northern European morning. The composition is artistic and minimalist, emphasizing the vastness of the ocean and the fragility of the subject. The color palette is composed of cool greys, deep navies, and muted whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEIehUk9qEwt4YuvKuJNATsLQMnpLVw9QoO0xiLpuDjgCEYNoDS7C7oHDSNMeI7m2oRP1b8wDwK39iRuiLWycmxclFHBk8MFzm-OGzh3VeEyAs5cuWFk56s62bKX5Q6vW9CDToNgx8tVPP0G8USsIakrBzp6fstLU-AbK74COnRxhgLcYJRIVNvz0JPCY3DJqJhJrtii-7xKpUZGamcrnGhUQAYpObjCTS5QB4ZcYVhpY1LjXS9JJI6C4KymEyb_LA8OTwKBOYaKiZ"/>
+<h3 class="font-headline-md text-headline-md mb-2">Timmy the Whale Was Stranded. Then Things Got Weird.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-2">A humpback that became stuck in the Baltic Sea seemed to unite a nation in hope.</p>
+<span class="font-caption text-caption">9 min read</span>
+</article>
+</aside>
+</div>
+</main>
+<!-- Footer Content Anchor -->
+<footer class="bg-surface border-t-4 border-double border-primary pt-stack-lg mt-stack-lg pb-12">
+<div class="max-w-7xl mx-auto px-section-margin">
+<div class="grid grid-cols-2 md:grid-cols-6 gap-column-gutter mb-12">
+<div class="col-span-2">
+<h2 class="font-display-masthead text-headline-md text-primary mb-4 italic">The Times</h2>
+<p class="font-caption text-caption text-secondary">© 2026 The New York Times Company</p>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-[11px] uppercase text-primary mb-2">News</span>
+<a class="font-label-md text-label-md text-secondary hover:text-primary hover:underline transition-opacity" href="#">World</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary hover:underline transition-opacity" href="#">Politics</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary hover:underline transition-opacity" href="#">Business</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-[11px] uppercase text-primary mb-2">Opinion</span>
+<a class="font-label-md text-label-md text-secondary hover:text-primary hover:underline transition-opacity" href="#">Today's Opinion</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary hover:underline transition-opacity" href="#">Columnists</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary hover:underline transition-opacity" href="#">Editorials</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-[11px] uppercase text-primary mb-2">Support</span>
+<a class="font-label-md text-label-md text-secondary hover:text-primary hover:underline transition-opacity" href="#">Contact Us</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary hover:underline transition-opacity" href="#">Help</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary hover:underline transition-opacity" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-[11px] uppercase text-primary mb-2">More</span>
+<a class="font-label-md text-label-md text-secondary hover:text-primary hover:underline transition-opacity" href="#">Work with us</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary hover:underline transition-opacity" href="#">T Brand Studio</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary hover:underline transition-opacity" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 border-t border-border-gray pt-6 justify-center">
+<a class="font-caption text-caption text-on-secondary-container hover:text-primary" href="#">NYTCo</a>
+<a class="font-caption text-caption text-on-secondary-container hover:text-primary" href="#">Accessibility</a>
+<a class="font-caption text-caption text-on-secondary-container hover:text-primary" href="#">Advertise</a>
+<a class="font-caption text-caption text-on-secondary-container hover:text-primary" href="#">Site Map</a>
+<a class="font-caption text-caption text-on-secondary-container hover:text-primary" href="#">Canada</a>
+<a class="font-caption text-caption text-on-secondary-container hover:text-primary" href="#">International</a>
+<a class="font-caption text-caption text-on-secondary-container hover:text-primary" href="#">Subscriptions</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for live indicator
+        setInterval(() => {
+            const date = new Date();
+            const timeString = date.toLocaleTimeString('en-US', { 
+                hour: 'numeric', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                hour12: true 
+            });
+            // Auto-update subtle timestamp if needed
+        }, 1000);
+
+        // Hover effects for news cards
+        document.querySelectorAll('article').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.opacity = '0.9';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.opacity = '1';
+            });
+        });
+    </script>
+</body></html>
